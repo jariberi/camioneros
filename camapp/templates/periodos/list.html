@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Seleccione un periodo para chofer: <a href="{% url "listaEmpleados" chofer.empresa.id %}">{{chofer.nombre}} {{chofer.apellido}}</a></h1>
+<ul>
+{% for periodo in periodos %}
+<li>{{periodo.ano}}/{{periodo.mes}} ---- <a href="{% url "listaViajes" periodo=periodo.id %}">VIAJES</a> -- <a href="{% url "exportarViajes" periodo=periodo.id %}">EXPORTAR VIAJES</a></li>
+{% endfor %}
+<h5>No hay ningun periodo? Agregue uno <a href="{% url "agregarPeriodo" empleado=chofer_id %}">aquí</a>.</h5>
+</ul>
+</body>
+</html>

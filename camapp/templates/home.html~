@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Seleccione una empresa:</h1>
+<ul>
+{% for empresa in empresas %}
+<li>{{empresa.nombre}}</li>
+{% endfor %}
+<h5>No hay ninguna empresa? Agregue una aquí.</h5>
+</ul>
+</body>
+</html>

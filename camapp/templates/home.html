@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Seleccione una empresa:</h1>
+<ul>
+{% for empresa in empresas %}
+<li><a href="{% url "listaEmpleados" empresa=empresa.id %}">{{empresa.nombre}}</a></li>
+{% endfor %}
+<h5>No hay ninguna empresa? Agregue una <a href="{% url "agregarEmpresa" %}">aquí</a>.</h5>
+</ul>
+</body>
+</html>

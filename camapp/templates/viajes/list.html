@@ -1,0 +1,41 @@
+<h1>Listado de viajes del chofer <a href="{% url "listaEmpleados" chofer.empresa.id %}">{{chofer.nombre}} {{chofer.apellido}}</a> del periodo <a href="{% url "listaPeriodos" periodo.id %}">{{periodo.ano}}/{{periodo.mes}}</a>:</h1>
+
+<h2><a href="{% url "agregarViaje" periodo=periodo.id %}">Nuevo</a></h2>
+
+<table border="1">
+	<thead><tr>
+		<th>Fecha Salida</th>
+		<th>Fecha Llegada</th>
+		<th>Kms Normales</th>
+		<th>Kms Extra (fer)</th>
+		<th>Descargas</th>
+		<th>Salida</th>
+		<th>Llegada</th>
+		<th>Acciones</th>
+	</thead></tr>
+	{% for viaje in viajes %}
+	{% if forloop.counter|divisibleby:2 %}
+	<tr>
+		<td>{{viaje.fecha_salida|date:"d/m/Y"}}</td>
+		<td>{{viaje.fecha_llegada|date:"d/m/Y"}}</td>
+		<td>{{viaje.kms_normales_recorridos}}</td>
+		<td>{{viaje.kms_extraordinarios_feriados}}</td>
+		<td>{{viaje.descargas}}</td>
+		<td>{{viaje.localidad_salida}} ({{viaje.provincia_salida}})</td>
+		<td>{{viaje.localidad_llegada}} ({{viaje.provincia_llegada}})</td>
+		<td><a href="{% url "editarViaje" viaje.id %}">EDITAR</a> --- <a href="{% url "borrarViaje" viaje.id %}">BORRAR</a>
+	</tr>
+	{% else %}
+	<tr>
+		<td>{{viaje.fecha_salida|date:"d/m/Y"}}</td>
+		<td>{{viaje.fecha_llegada|date:"d/m/Y"}}</td>
+		<td>{{viaje.kms_normales_recorridos}}</td>
+		<td>{{viaje.kms_extraordinarios_feriados}}</td>
+		<td>{{viaje.descargas}}</td>
+		<td>{{viaje.localidad_salida}} ({{viaje.provincia_salida}})</td>
+		<td>{{viaje.localidad_llegada}} ({{viaje.provincia_llegada}})</td>
+		<td><a href="{% url "editarViaje" viaje.id %}">EDITAR</a> --- <a href="{% url "borrarViaje" viaje.id %}">BORRAR</a>
+	</tr>
+	{% endif %}
+	{% endfor %}
+</table>

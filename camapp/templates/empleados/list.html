@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Seleccione un empleado de la empresa <a href={% url "home" %}>{{empleados.0.empresa.nombre}}</a>:</h1>
+<ul>
+{% for empleado in empleados %}
+<li>{{empleado.apellido}} {{empleado.nombre}} ---- <a href="{% url "editarEmpleado" pk=empleado.id %}">EDITAR</a> -- <a href="{% url "listaPeriodos" empleado=empleado.id %}">PERIODOS</a></li>
+{% endfor %}
+<h5>No hay ningun empleado? Agregue uno <a href="{% url "agregarEmpleado" empresa=empresa %}">aquí</a>.</h5>
+</ul>
+</body>
+</html>
